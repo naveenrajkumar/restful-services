@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "adfc9a72-c999-4813-8e7d-70231a5fb79e",
+		"name": "1_Postman_Account_Rest_APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://13.210.72.123:8080/accounts",
+					"protocol": "http",
+					"host": [
+						"13",
+						"210",
+						"72",
+						"123"
+					],
+					"port": "8080",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions for account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://13.210.72.123:8080/account/136056165/transactions",
+					"protocol": "http",
+					"host": [
+						"13",
+						"210",
+						"72",
+						"123"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"136056165",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountCurrency\": \"AUD\",\r\n  \"accountName\": \"AUCurrent501\",\r\n  \"accountNumber\": 136056162,\r\n  \"accountType\": \"Savings\",\r\n  \"availableBalance\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://13.210.72.123:8080/account",
+					"protocol": "http",
+					"host": [
+						"13",
+						"210",
+						"72",
+						"123"
+					],
+					"port": "8080",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 20,\r\n  \"currency\": \"AUD\",\r\n  \"transactionType\":\"Credit\"\r\n}"
+				},
+				"url": {
+					"raw": "http://13.210.72.123:8080/account/136056165/transaction",
+					"protocol": "http",
+					"host": [
+						"13",
+						"210",
+						"72",
+						"123"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"136056165",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative-WrongTransactionType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": -20,\r\n  \"currency\": \"AUD\",\r\n  \"transactionType\":\"Cre\"\r\n}"
+				},
+				"url": {
+					"raw": "http://13.210.72.123:8080/account/136056165/transaction",
+					"protocol": "http",
+					"host": [
+						"13",
+						"210",
+						"72",
+						"123"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"136056165",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative-WrongTransactionAmount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": -20,\r\n  \"currency\": \"AUD\",\r\n  \"transactionType\":\"Debit\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/136056165/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"136056165",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NegativeWrongAccountCurrency",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 20,\r\n  \"currency\": \"SGD\",\r\n  \"transactionType\":\"Debit\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/136056165/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"136056165",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
